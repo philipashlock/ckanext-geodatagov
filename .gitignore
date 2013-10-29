@@ -8,3 +8,6 @@ conversiontool/errors.log
 conversiontool/debug.xml
 conversiontool/lib/saxon-license.lic
 conversiontool/lib/*.jar
+
+deployment/hosts
+deployment/.vagrant
