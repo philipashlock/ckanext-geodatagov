@@ -1,0 +1,25 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+VAGRANTFILE_API_VERSION = "1"
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+  config.vm.box = "centos64"
+  config.vm.box_url = "http://developer.nrel.gov/downloads/vagrant-boxes/CentOS-6.4-x86_64-v20130731.box"
+  config.vm.network :hostonly, "192.168.19.98"
+  config.vm.host_name = "ckan.dev"
+  config.vm.share_folder "v-root", "/vagrant", ".", :nfs => true
+
+  config.vm.provision "ansible" do |ansible|
+    ansible.playbook = "datagov-buildserver.yml"
+  end
+
+  config.vm.define :ckan_buildserver do |t|
+  end
+
+  config.vm.customize ["setextradata", :id, "VBoxInternal2/SharedFoldersEnableSymlinksCreate/v-root", "1"]
+  config.vm.customize ["modifyvm", :id, "--memory", 1024]
+  config.vm.customize ["modifyvm", :id, "--cpus", 1]
+  config.ssh.forward_agent = true
+  
+end
