@@ -11,3 +11,5 @@ conversiontool/lib/*.jar
 
 deployment/hosts
 deployment/.vagrant
+
+deployment/vagrant_ansible_inventory_ckan_buildserver

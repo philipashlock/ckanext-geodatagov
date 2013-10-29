@@ -40,7 +40,14 @@ ansible-playbook datagov-buildserver.yml
 
 You may have to supply connection parameters to ansible-playbook i.e private-key or password to connect.  See ansible-playbook --help
 
-To run ansible with your Vagrant machine you'll need to supply some additional parameters. Try:
+To run ansible with your Vagrant machine, first initiatalize the machine.
+
+```
+vagrant up
+```
+
+
+If vagrant doesn't automatically provision everything with ansible, you may need to activate it from your local machine using ansible with some additional parameters. You'll want to comment out the part of Vagrantfile that attempts to automatically provision with ansible, then make sure the machine is running through vagrant. From your local machine you'll then run:
 
 ```
 ansible-playbook -i hosts datagov-buildserver.yml -u vagrant -k --ask-pass --sudo -c paramiko

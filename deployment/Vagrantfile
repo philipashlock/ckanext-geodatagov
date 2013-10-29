@@ -10,9 +10,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.host_name = "ckan.dev"
   config.vm.share_folder "v-root", "/vagrant", ".", :nfs => true
 
-  config.vm.provision "ansible" do |ansible|
-    ansible.playbook = "datagov-buildserver.yml"
-  end
+#  config.vm.provision "ansible" do |ansible|
+#    ansible.playbook = "datagov-buildserver.yml"
+#  end
 
   config.vm.define :ckan_buildserver do |t|
   end
